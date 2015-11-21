@@ -8,7 +8,7 @@ var bio = {
     "email" : "julia.richards@fairies.com",
     "github" : "juliaboolea",
     "instagram" : "jul2ski",
-    "location" : "Yurt",
+    "location" : "Stockholm, Sweden",
 
   },
 
@@ -22,14 +22,14 @@ var bio = {
 
 var work = {
   jobs : [
-  { "city" : "Denver",
+  { "location" : "Denver, CO",
     "job" : "Resort Map Maker",
     "employeer" : "FATMAP",
     "duration" : "Winter 2015-2016",
     "title" : "Project Manager",
     "description" : "Built out 3D renderings of all major North American ski resorts using a skillful mix of propritary software, Python, javascript and SQL. Took Fridays off whenever more than 3 inches of snow fell. Led a team of interns through the wild work of startup culture."
   },
-  { "city" : "Denver",
+  { "location" : "Denver, CO",
     "job" : "Sustainability",
     "employeer" : "US Green Building Council",
     "duration" : "May 2015 - September 2015",
@@ -37,19 +37,19 @@ var work = {
     "description" : "Consistently finished activities quicker than called for often leaving myself an empty to do list. Helped refresh the web presence of USGBC Denver, plan three educational events and build out a salesforce database intended to put marketing and communication channels on a firm footing."
 
   },
-  { "city" : "Chaing Mai Thailand",
+  { "location" : "Chaing Mai, Thailand",
     "job" : "Water Analyst",
     "employeer" : "Thai Dept Natural Resources",
     "duration" : "Feb 2015 - April 2015",
     "title" : "Water Quality Chemist",
     "description" : "Collected and analyzed samples taken in the field which helped to better categorize the surface water of Thailand's northern Golden Triangle. This work took place in a lab and followed highly regulated SOP. During this time I also led English language instruction and facilitated resume building workshops for non-native English speakers."
   },
-  { "city" : "Fairy Land",
+  { "location" : "Portland, OR",
     "job" : "Inventing cool recipes",
     "employeer" : "Beacon Richards",
     "duration" : "Since January 12, 1956",
     "title" : "Master Puppy Mom",
-    "description" : "Bringing a puppy into the world is by all accounts a time consuming and difficult process. My partner and I have steadfastly worked to keep Beacon Richards on teh path of teh straight and narrow, but he is a criminal at heart and falls back to his passion: stealing money for treats. Learn more <a href='danielpowell4.github.io/beacon-the-criminal'>Here</a>"
+    "description" : "Bringing a puppy into the world is by all accounts a time consuming and difficult process. My partner and I have steadfastly worked to keep Beacon Richards on teh path of teh straight and narrow, but he is a criminal at heart and falls back to his passion: stealing money for treats. Learn more at danielpowell4.github.io/beacon-the-criminal"
 
   }
 
@@ -113,16 +113,16 @@ var projects = {
       "dates" : "Jan 23 to Dec 19",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "images" : [
-        "http://image1",
-        "http://image2"
+        "images/beacon_wink_square.gif",
+        "images/beacon-card-carrier.jpg"
       ]
     },
     { "title" : "Project Name 2",
       "dates" : "Nov 23 to Dec 17",
       "description" : "Beacon is a deathly criminal who must be feared under all circumstances.",
       "images" : [
-        "http://image1",
-        "http://image2"
+        "images/beacon-law-breaker.jpg",
+        "images/beacon-in-garden.jpg"
       ]
     },
   ]
@@ -142,29 +142,76 @@ if (bio.skills.length > 0) {
   for (skill in bio.skills) {
     var formattedSkill = HTMLskills.replace('%data%',bio.skills[skill]);
     $('#skills').append(formattedSkill);
-
 }};
 
-//add in Employeer + job Title
+//add in Work info
 function displayWork() {
+  for (job in work.jobs) {
+    $("#workExperience").append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employeer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
-for (job in work.jobs) {
-  $("#workExperience").append(HTMLworkStart);
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employeer);
-  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-  var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    $(".work-entry:last").append(formattedEmployerTitle);
 
-  $(".work-entry:last").append(formattedEmployerTitle);
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].duration);
+    $(".work-entry:last").append(formattedDates);
 
-  var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].duration);
-  $(".work-entry:last").append(formattedDates);
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+    $(".work-entry:last").append(formattedDescription);
 
-  var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-  $(".work-entry:last").append(formattedDescription);
-
-
-};
-
-};
-
+    };
+  };
 displayWork();
+
+function displayProject() {
+  for (project in projects.projects) {
+    $("#projects").append(HTMLprojectStart);
+
+    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+    $(".project-entry:last").append(formattedProjectTitle);
+
+    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+    $(".project-entry:last").append(formattedProjectDates);
+
+    var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+    $(".project-entry:last").append(formattedProjectDescription);
+
+    if (projects.projects[project].images.length > 0){
+      for (image in projects.projects[project].images){
+        var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+        $(".project-entry:last").append(formattedProjectImage);
+      }
+    }
+  }
+}
+
+displayProject();
+
+//Add in a map
+
+$('#mapDiv').append(googleMap);
+
+// logs the location clicked on the page to the console
+/*
+$(document).click(function(loc){
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  console.log(x,y);
+});
+*/
+
+// Holds the code that if properly linked to teh internationalizeButton would change the name's case to First LAST notation
+/*
+function inName(name){
+  name = name.trim().split(" ");
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+  return name[0] + " " + name[1];
+};
+
+console.log(inName("James Dean"));
+
+$('#main').append(internationalizeButton);
+*/
