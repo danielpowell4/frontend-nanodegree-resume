@@ -11,20 +11,49 @@ var bio = {
     "location" : "Yurt",
 
   },
+
   "biopic" : "https://cdn.fbsbx.com/hphotos-xft1/v/t59.2708-21/11109486_10206799892378565_328754219_n.gif?oh=ac223d83943bad0625531c68deb77e0e&oe=564D8E0E",
   "welcomeMessage" : "I am the best and you should totally give me a job.",
-  "skills" : [ "Being the Best", "Remote sensing", "Knowing about Tiny Houses", "Kisses", "Raising a <a href='http://danielpowell4.github.io/beacon-the-criminal'>criminal</a>"
+  "skills" : [ "Being the Best", "Remote sensing", "Tiny Houses", "Kisses", "Calculus"
 ]
 
-}
-
+};
 
 
 var work = {
-  "city" : "Fairy Land",
-  "job" : "Inventing cool recipes",
-  "employeer" : "Beacon Richards",
-  "duration" : "Since January 12, 1956"
+  jobs : [
+  { "city" : "Denver",
+    "job" : "Resort Map Maker",
+    "employeer" : "FATMAP",
+    "duration" : "Winter 2015-2016",
+    "title" : "Project Manager",
+    "description" : "Built out 3D renderings of all major North American ski resorts using a skillful mix of propritary software, Python, javascript and SQL. Took Fridays off whenever more than 3 inches of snow fell. Led a team of interns through the wild work of startup culture."
+  },
+  { "city" : "Denver",
+    "job" : "Sustainability",
+    "employeer" : "US Green Building Council",
+    "duration" : "May 2015 - September 2015",
+    "title" : "Website Development Intern",
+    "description" : "Consistently finished activities quicker than called for often leaving myself an empty to do list. Helped refresh the web presence of USGBC Denver, plan three educational events and build out a salesforce database intended to put marketing and communication channels on a firm footing."
+
+  },
+  { "city" : "Chaing Mai Thailand",
+    "job" : "Water Analyst",
+    "employeer" : "Thai Dept Natural Resources",
+    "duration" : "Feb 2015 - April 2015",
+    "title" : "Water Quality Chemist",
+    "description" : "Collected and analyzed samples taken in the field which helped to better categorize the surface water of Thailand's northern Golden Triangle. This work took place in a lab and followed highly regulated SOP. During this time I also led English language instruction and facilitated resume building workshops for non-native English speakers."
+  },
+  { "city" : "Fairy Land",
+    "job" : "Inventing cool recipes",
+    "employeer" : "Beacon Richards",
+    "duration" : "Since January 12, 1956",
+    "title" : "Master Puppy Mom",
+    "description" : "Bringing a puppy into the world is by all accounts a time consuming and difficult process. My partner and I have steadfastly worked to keep Beacon Richards on teh path of teh straight and narrow, but he is a criminal at heart and falls back to his passion: stealing money for treats. Learn more <a href='danielpowell4.github.io/beacon-the-criminal'>Here</a>"
+
+  }
+
+]
 };
 
 
@@ -48,34 +77,34 @@ var education = {
     {   "title": "Learn SEO to Grow Your Website",
         "platform": "SkillShare",
         "stated-hours": "1.5",
-        "date": ,
+        "date": " ",
         "url": "https://www.skillshare.com/classes/business/Learn-SEO-to-Grow-Your-Website/986897421"
       },
     {   "title": "Context is Key: Social Media Strategy in a Noisy Online World",
         "platform": "SkillShare",
         "stated-hours": "1.5",
-        "date": ,
+        "date": " ",
         "url": "https://www.skillshare.com/classes/business/Context-is-Key-Social-Media-Strategy-in-a-Noisy-Online-World/101309737"
       },
     {   "title": "Make the Most of Instagram",
         "platform": "SkillShare",
         "stated-hours": "0.5",
-        "date": ,
+        "date": " ",
         "url": "https://www.skillshare.com/classes/photography/Make-the-Most-of-Instagram-Build-Your-Brand/456592175?via=search-layout-grid"
       },
     {   "title": "Strategic Design The-Art and Science of Branding",
         "platform": "SkillShare",
         "stated-hours": "0.75",
-        "date": ,
+        "date": " ",
         "url": "https://www.skillshare.com/classes/design/Strategic-Design-The-Art-and-Science-of-Branding/329177585"
       },
       {   "title": "Strategic Design The-Art and Science of Branding",
           "platform": "SkillShare",
           "stated-hours": "0.75",
-          "date": ,
+          "date": " ",
           "url": "https://www.skillshare.com/classes/design/Strategic-Design-The-Art-and-Science-of-Branding/329177585"
       },
-    ]}
+    ]};
 
 
 var projects = {
@@ -97,25 +126,45 @@ var projects = {
       ]
     },
   ]
-}
+};
 
+// add name and title
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
+// add in "Skills at a Glance heading"
 if (bio.skills.length > 0) {
   $('#header').append(HTMLskillsStart);
-  var formattedSkill = HTMLskills.replace('%data%',bio.skills[0]);
-  $('#skills').append(formattedSkill);
-  formattedSkill = HTMLskills.replace('%data%',bio.skills[1]);
-  $('#skills').append(formattedSkill);
-  formattedSkill = HTMLskills.replace('%data%',bio.skills[2]);
-  $('#skills').append(formattedSkill);
-  formattedSkill = HTMLskills.replace('%data%',bio.skills[3]);
-  $('#skills').append(formattedSkill);
-  formattedSkill = HTMLskills.replace('%data%',bio.skills[4]);
-  $('#skills').append(formattedSkill);
-}
+  // add in stills from bio
+  for (skill in bio.skills) {
+    var formattedSkill = HTMLskills.replace('%data%',bio.skills[skill]);
+    $('#skills').append(formattedSkill);
 
-for (jobs in work.job) {
-  
-}
-//var formattedName = HTMLheaderName.replace("%data%", bio.name);
-//var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+}};
+
+//add in Employeer + job Title
+function displayWork() {
+
+for (job in work.jobs) {
+  $("#workExperience").append(HTMLworkStart);
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employeer);
+  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+  var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+  $(".work-entry:last").append(formattedEmployerTitle);
+
+  var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].duration);
+  $(".work-entry:last").append(formattedDates);
+
+  var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+  $(".work-entry:last").append(formattedDescription);
+
+
+};
+
+};
+
+displayWork();
