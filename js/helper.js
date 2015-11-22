@@ -167,7 +167,7 @@ function initializeMap() {
     });
 
     // infoWindows are the little helper windows that open when you click
-    var infoWindow = new google.maps.InfoWindow;
+    var infoWindow = new google.maps.InfoWindow();
 
     google.maps.event.addListener(marker, 'click', function() {
       infoWindow.setContent('<b>' + name + '</b>');
