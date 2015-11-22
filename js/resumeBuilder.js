@@ -1,28 +1,63 @@
-
-
+// All about that Who I am + Contact me
 var bio = {
-  "name" : "Julia Richards",
-  "role" : "GIS Wizard",
+  "name" : "Almond Milk",
+  "role" : "A Drink Worth Drought",
   "contacts" : {
-    "mobile" : "303-100-0006",
-    "email" : "julia.richards@fairies.com",
-    "github" : "juliaboolea",
-    "instagram" : "jul2ski",
-    "location" : "Stockholm, Sweden",
+    "mobile" : "303-867-5309",
+    "email" : "almond@fairies.com",
+    "github" : "californication",
+    "instagram" : "almond-lover",
+    "location" : "Desert, California"
+    },
+  "biopic" : "images/almond-milk.jpg",
+  "welcomeMessage" : "I am a delecitable treat that cannot be beat.",
+  "skills" : [ "Being the Best", "Nourishment", "Folk Music", "Kisses", "Water Sucking"]}
 
-  },
+function formatBio() {
 
-  "biopic" : "https://cdn.fbsbx.com/hphotos-xft1/v/t59.2708-21/11109486_10206799892378565_328754219_n.gif?oh=ac223d83943bad0625531c68deb77e0e&oe=564D8E0E",
-  "welcomeMessage" : "I am the best and you should totally give me a job.",
-  "skills" : [ "Being the Best", "Remote sensing", "Tiny Houses", "Kisses", "Calculus"
-]
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  $("#header").prepend(formattedRole);
+  $("#header").prepend(formattedName);
 
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+  $("#topContacts").append(formattedMobile);
+
+  var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+  $("#topContacts").append(formattedEmail);
+
+  var formattedInsta = HTMLinsta.replace("%data%", bio.contacts.instagram);
+  $("#topContacts").append(formattedInsta);
+
+  var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
+  $("#topContacts").append(formattedGit);
+
+  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+  $("#topContacts").append(formattedLocation);
+
+  var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  $("#header").append(formattedWelcomeMsg);
+
+  var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+  $("#header").append(formattedPic);
+
+  // add in "Skills at a Glance heading"
+  if (bio.skills.length > 0) {
+    $('#header').append(HTMLskillsStart);
+    // add in stills from bio
+    for (skill in bio.skills) {
+      var formattedSkill = HTMLskills.replace('%data%',bio.skills[skill]);
+      $('#skills').append(formattedSkill);
+  };
 };
 
+};
+bio.format = formatBio();
 
+// All about that work
 var work = {
   jobs : [
-  { "location" : "Denver, CO",
+  { "location" : "Stockholm, Sweden",
     "job" : "Resort Map Maker",
     "employeer" : "FATMAP",
     "duration" : "Winter 2015-2016",
@@ -55,96 +90,6 @@ var work = {
 
 ]
 };
-
-
-var education = {
-  "schools" : [
-    { "name": "University of Denver",
-      "location": "Denver, CO",
-      "degree": "BSCh + BS",
-      "major": "Chemistry (ACS) + Biological Sciences",
-      "dates": "September 2010 - June 2014",
-      "url": "http://du.edu"
-    },
-    {   "name": "International Sustainable Development Studies Institute",
-        "location": "Chiang Mai, Thailand",
-        "major": "Ecology and Thai Language",
-        "dates": "September 2010 - June 2014",
-        "url": "http://isdsi.org"
-    }
-  ],
-  "onlineCourses" : [
-    {   "title": "Learn SEO to Grow Your Website",
-        "platform": "SkillShare",
-        "stated-hours": "1.5",
-        "date": " ",
-        "url": "https://www.skillshare.com/classes/business/Learn-SEO-to-Grow-Your-Website/986897421"
-      },
-    {   "title": "Context is Key: Social Media Strategy in a Noisy Online World",
-        "platform": "SkillShare",
-        "stated-hours": "1.5",
-        "date": " ",
-        "url": "https://www.skillshare.com/classes/business/Context-is-Key-Social-Media-Strategy-in-a-Noisy-Online-World/101309737"
-      },
-    {   "title": "Make the Most of Instagram",
-        "platform": "SkillShare",
-        "stated-hours": "0.5",
-        "date": " ",
-        "url": "https://www.skillshare.com/classes/photography/Make-the-Most-of-Instagram-Build-Your-Brand/456592175?via=search-layout-grid"
-      },
-    {   "title": "Strategic Design The-Art and Science of Branding",
-        "platform": "SkillShare",
-        "stated-hours": "0.75",
-        "date": " ",
-        "url": "https://www.skillshare.com/classes/design/Strategic-Design-The-Art-and-Science-of-Branding/329177585"
-      },
-      {   "title": "Strategic Design The-Art and Science of Branding",
-          "platform": "SkillShare",
-          "stated-hours": "0.75",
-          "date": " ",
-          "url": "https://www.skillshare.com/classes/design/Strategic-Design-The-Art-and-Science-of-Branding/329177585"
-      },
-    ]};
-
-
-var projects = {
-  "projects" : [
-    { "title" : "Project Name 1",
-      "dates" : "Jan 23 to Dec 19",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "images" : [
-        "images/beacon_wink_square.gif",
-        "images/beacon-card-carrier.jpg"
-      ]
-    },
-    { "title" : "Project Name 2",
-      "dates" : "Nov 23 to Dec 17",
-      "description" : "Beacon is a deathly criminal who must be feared under all circumstances.",
-      "images" : [
-        "images/beacon-law-breaker.jpg",
-        "images/beacon-in-garden.jpg"
-      ]
-    },
-  ]
-};
-
-// add name and title
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-// add in "Skills at a Glance heading"
-if (bio.skills.length > 0) {
-  $('#header').append(HTMLskillsStart);
-  // add in stills from bio
-  for (skill in bio.skills) {
-    var formattedSkill = HTMLskills.replace('%data%',bio.skills[skill]);
-    $('#skills').append(formattedSkill);
-}};
-
-//add in Work info
 function displayWork() {
   for (job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
@@ -162,8 +107,29 @@ function displayWork() {
 
     };
   };
-displayWork();
+work.formatWork = displayWork();
 
+// All about those Projects
+var projects = {
+  "projects" : [
+    { "title" : "Spacer Explorer",
+      "dates" : "Jan 23, 1969 to Dec 19, 1972",
+      "description" : "I chosen by the government to be involved in several exploratory expeditions of our solar system involving but not limited to the first human mission to Europa-- Jupiter's icey moon. Though I am unable to entirely disclose all of our findings, I am able to suggest that you should get onto the deep web and start looking for aliens. There is some really cool stuff out there.",
+      "images" : [
+        "images/moon.jpg",
+        "images/alien.jpg"
+      ]
+    },
+    { "title" : "Song and Speech Writer",
+      "dates" : "March 2007 to September 2015",
+      "description" : "I have had the pleasure of using my talents to aid of our society's most influential members. Though they would not admit it in public, the two individuals below have me in common. I was the chief speech writer during Obama's 2008 Presidential campaign as well as the lead producer for the record shattering videos related to Taylor Swift's multiplatinum 1989.",
+      "images" : [
+        "images/t-swift.jpg",
+        "images/obama.jpg"
+      ]
+    },
+  ]
+};
 function displayProject() {
   for (project in projects.projects) {
     $("#projects").append(HTMLprojectStart);
@@ -185,8 +151,99 @@ function displayProject() {
     }
   }
 }
+projects.formatProject = displayProject();
 
-displayProject();
+
+var education = {
+  "schools" : [
+    { "name": "University of Denver",
+      "location": "Denver, CO",
+      "degree": "BSCh + BS",
+      "major": "Chemistry (ACS) + Biological Sciences",
+      "dates": "September 2010 - June 2014",
+      "url": "http://du.edu"
+    },
+    {   "name": "International Sustainable Development Studies Institute",
+        "location": "Chiang Mai, Thailand",
+        "degree" : "Thai Style",
+        "major": "Ecology and Thai Language",
+        "dates": "September 2010 - June 2014",
+        "url": "http://isdsi.org"
+    }
+  ],
+  "onlineCourses" : [
+    {   "title": "Learn SEO to Grow Your Website",
+        "platform": "SkillShare",
+        "stated-hours": "1.5",
+        "date": "March 2015",
+        "url": "https://www.skillshare.com/classes/business/Learn-SEO-to-Grow-Your-Website/986897421"
+      },
+    {   "title": "Context is Key: Social Media Strategy in a Noisy Online World",
+        "platform": "SkillShare",
+        "stated-hours": "1.5",
+        "date": "March 2015",
+        "url": "https://www.skillshare.com/classes/business/Context-is-Key-Social-Media-Strategy-in-a-Noisy-Online-World/101309737"
+      },
+    {   "title": "Make the Most of Instagram",
+        "platform": "SkillShare",
+        "stated-hours": "0.5",
+        "date": "March 2015",
+        "url": "https://www.skillshare.com/classes/photography/Make-the-Most-of-Instagram-Build-Your-Brand/456592175?via=search-layout-grid"
+      }
+    ]};
+
+;;
+
+function displaySchools() {
+  for (school in education.schools){
+    $("#education").append(HTMLschoolStart);
+
+    var formattedSchoolUrl = HTMLschoolUrl.replace("%data%", education.schools[school].url);
+    var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+    var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+    $(".education-entry:last").append(formattedSchoolUrl + formattedSchoolName + formattedSchoolDegree);
+
+    var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+    $(".education-entry:last").append(formattedSchoolDates);
+
+    var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+    $(".education-entry:last").append(formattedSchoolLocation);
+
+    var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+    $(".education-entry:last").append(formattedSchoolMajor);
+
+};
+};
+education.formatSchools = displaySchools();
+
+function displayOnlineClasses() {
+  $("#education").append(HTMLonlineClasses);
+  for (course in education.onlineCourses) {
+    $("#education").append(HTMLonlineSchoolStart);
+
+    var formattedOnlineClassUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].platform);
+    $(".online-class-entry:last").append(formattedOnlineClassUrl + formattedOnlineTitle + formattedOnlineSchool);
+
+    var formattedOnlineClassDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date)
+    $(".online-class-entry:last").append(formattedOnlineClassDate);
+
+
+
+
+
+  }
+
+};
+
+displayOnlineClasses();
+
+//var HTMLonlineClasses = '<h3>Online Classes</h3>';
+//var HTMLonlineTitle = '<a href="#">%data%';
+//var HTMLonlineSchool = ' - %data%</a>';
+//var HTMLonlineDates = '<div class="date-text">%data%</div>';
+var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
 //Add in a map
 

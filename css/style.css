@@ -20,13 +20,21 @@ h6 {
 
 .education-entry,
 .work-entry,
-.project-entry {
+.project-entry,
+.online-class-entry {
   padding: 0 5%;
+}
+
+.education-entry:last-child,
+.work-entry:last-of-type,
+.project-entry:last-of-type,
+.online-class-entry:last-of-type {
+  padding-bottom: 4vh;
 }
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #ad48e8;
   line-height: 48px;
   display: inline;
 }
@@ -53,12 +61,8 @@ h4 {
   line-height: 17px;
 }
 
-h2,
-h3,
-h4,
-h5 {
-  padding:10px 5%;
-
+h2, h3, h4, h5 {
+    padding: 5vh 5vw 1vh 5vw;
 }
 
 
@@ -100,16 +104,16 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #ad48e8;
   display: none;
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #66ede0;
 }
 
 .orange-text {
-  color: #f5ae23;
+  color: #66ede0;
 }
 
 .white-text {
@@ -204,6 +208,12 @@ span {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
+  margin-bottom: 4vh;
+}
+
+.footer {
+    padding: 3vh;
+    color: #ad48e8;
 }
 
 @media only screen and (min-width: 750px) {
