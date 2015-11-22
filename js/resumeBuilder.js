@@ -15,8 +15,11 @@ var bio = {
 };
 
 bio.display = function() {
+
     var $header = $("#header");
     var $topContacts = $("#topContacts");
+    var $footerContacts = $("#footerContacts");
+
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $header.prepend(formattedRole);
@@ -54,6 +57,10 @@ bio.display = function() {
             }
         }
     }
+
+    $footerContacts.append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+		$footerContacts.append(HTMLemail.replace(/%data%/g, bio.contacts.email));
+		$footerContacts.append(HTMLlocation.replace("%data%", bio.contacts.location));
 
 }
 
