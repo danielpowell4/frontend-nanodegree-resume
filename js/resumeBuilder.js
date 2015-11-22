@@ -228,22 +228,10 @@ function displayOnlineClasses() {
 
     var formattedOnlineClassDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date)
     $(".online-class-entry:last").append(formattedOnlineClassDate);
-
-
-
-
-
   }
-
 };
+education.formatOnlineClasses = displayOnlineClasses();
 
-displayOnlineClasses();
-
-//var HTMLonlineClasses = '<h3>Online Classes</h3>';
-//var HTMLonlineTitle = '<a href="#">%data%';
-//var HTMLonlineSchool = ' - %data%</a>';
-//var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
 //Add in a map
 
